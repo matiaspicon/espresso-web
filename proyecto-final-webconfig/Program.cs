@@ -1,7 +1,17 @@
+using Microsoft.EntityFrameworkCore;
+using proyecto_final_webconfig.Data;
+using proyecto_final_webconfig.Repository;
+using proyecto_final_webconfig.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<EspressoContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DB")));
+builder.Services.AddTransient<IEventsRepository, EventsRepository>();
+builder.Services.AddTransient<IEventsService, EventsService>();
+
 
 var app = builder.Build();
 
