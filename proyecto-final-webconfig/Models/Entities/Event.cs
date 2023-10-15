@@ -1,17 +1,39 @@
-﻿namespace proyecto_final_webconfig.Models.Entities
+﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace proyecto_final_webconfig.Models.Entities
 {
+
+
+    [Table("events")]
     public class Event
     {
+        [Key]
+        [Column("id")]
         public int Id { get; set; }
-        public string EventName { get; set; }
-        public DateTime EventDate { get; set; }
-        public string EventLocation { get; set; }
+
+        [Column("ip_source")]
         public string IpSource { get; set; }
+
+        [Column("mac_source")]
         public string MacSource { get; set; }
+
+        [Column("ip_destination")]
         public string IpDestination { get; set; }
+
+        [Column("mac_destination")]
         public string MacDestination { get; set; }
+
+        [Column("type_detection")]
         public string TypeDetection { get; set; }
+
+        [Column("cant_packets_detect")]
         public int CantPacketsDetect { get; set; }
+
+        [Column("timestamp")]
         public DateTime Timestamp { get; set; }
     }
+
 }
+
