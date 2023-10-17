@@ -20,7 +20,7 @@ namespace proyecto_final_webconfig.Models.Entities
         public string MacSource { get; set; }
 
         [Column("oui_source")]
-        public string OuiSource { get; set; }
+        public string? OuiSource { get; set; }
 
         [Column("ip_destination")]
         public string IpDestination { get; set; }
@@ -29,7 +29,7 @@ namespace proyecto_final_webconfig.Models.Entities
         public string MacDestination { get; set; }
 
         [Column("oui_destination")]
-        public string OuiDestination { get; set; }
+        public string? OuiDestination { get; set; }
 
         [Column("type_detection")]
         public string TypeDetection { get; set; }
