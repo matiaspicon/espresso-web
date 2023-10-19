@@ -4,40 +4,37 @@
     ViewData["Title"] = "View";
 }
 
-<h1>View</h1>
+<h1>Registro de eventos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table id="miTabla" class="table  table-striped table-hover">
     <thead class="table-primary">
         <tr>
+            @*  <th>
+                 @Html.DisplayNameFor(model => model.IpSource)
+             </th>
+             <th>
+                 @Html.DisplayNameFor(model => model.MacSource)
+             </th> *@
             <th>
-                @Html.DisplayNameFor(model => model.IpSource)
+                Dispositivo origen
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MacSource)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OuiSource)
-            </th>
-            <th>
+            @* <th>
                 @Html.DisplayNameFor(model => model.IpDestination)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MacDestination)
+            </th> *@
+            <th>
+                Dispositivo destino
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.OuiDestination)
+                Tipo de ataque
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TypeDetection)
+                Tamaño de ataque
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CantPacketsDetect)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Timestamp)
+                Hora de detección
             </th>
             <th></th>
         </tr>
@@ -45,26 +42,26 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.IpSource)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MacSource)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.OuiSource)
             </td>
-            <td>
+            @* <td>
                 @Html.DisplayFor(modelItem => item.IpDestination)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.MacDestination)
-            </td>
+            </td> *@
             <td>
                 @Html.DisplayFor(modelItem => item.OuiDestination)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TypeDetection)
+            <td> 
+                @Html.DisplayFor(modelItem => item.TypeDetection) <btn class="btn"><i class="bi bi-question-circle"></i></btn>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CantPacketsDetect)
@@ -73,9 +70,7 @@
                 @Html.DisplayFor(modelItem => item.Timestamp)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">Ver detalle</a> 
             </td>
         </tr>
 }

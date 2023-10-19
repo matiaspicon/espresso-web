@@ -16,5 +16,10 @@ namespace proyecto_final_webconfig.Services
         {
             return await eventsRepository.GetAllRecentsEvents();
         }
+        public async Task<Event> GetEventByID(int id)
+        { 
+            return await eventsRepository.GetEventByID(id);
+        }
+
     }
 }

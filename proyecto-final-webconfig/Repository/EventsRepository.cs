@@ -18,5 +18,10 @@ namespace proyecto_final_webconfig.Repository
             return await espressoContext.Events.ToListAsync();
         }
 
+        public async Task<Event> GetEventByID(int id)
+        {
+            return await espressoContext.Events.Where(x => x.Id == id).FirstAsync();
+        }
+
     }
 }

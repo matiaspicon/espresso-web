@@ -24,6 +24,13 @@ namespace proyecto_final_webconfig.Controllers
 
             return View(events);
         }
+        public async Task<IActionResult> Details(int id)
+        {
+            //get all entities from the database events
+            var singleEvent = await eventsService.GetEventByID(id);
+
+            return View(singleEvent);
+        }
 
         public IActionResult Privacy()
         {

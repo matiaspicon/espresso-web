@@ -5,5 +5,6 @@ namespace proyecto_final_webconfig.Services
     public interface IEventsService
     {
         Task<IEnumerable<Event>> GetAllRecentsEvents();
+        Task<Event> GetEventByID(int id);
     }
 }

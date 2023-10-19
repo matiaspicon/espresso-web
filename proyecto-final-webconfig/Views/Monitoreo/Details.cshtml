@@ -1,0 +1,70 @@
+﻿@model proyecto_final_webconfig.Models.Entities.Event
+
+@{
+    ViewData["Title"] = "View";
+}
+
+<h1>Detalle de evento</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IpSource)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IpSource)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MacSource)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MacSource)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OuiSource)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OuiSource)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.IpDestination)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.IpDestination)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MacDestination)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MacDestination)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OuiDestination)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OuiDestination)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TypeDetection)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TypeDetection)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CantPacketsDetect)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CantPacketsDetect)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Timestamp)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Timestamp)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index" class="btn btn-outline-primary"><i class="bi bi-arrow-left"></i> Volver a la lista</a>
+</div>
