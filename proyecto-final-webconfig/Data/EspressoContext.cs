@@ -10,6 +10,7 @@ namespace proyecto_final_webconfig.Data
         }
 
         public DbSet<Event> Events { get; set; }
+        public DbSet<Device> Devices { get; set; }
     }
 }
 

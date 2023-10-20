@@ -28,6 +28,9 @@
                             <a class="nav-link text-white" asp-area="" asp-controller="Monitoreo" asp-action="Index"><i class="bi bi-list-columns-reverse"></i>   Registro de eventos</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Device" asp-action="Index"><i class="bi bi-display"></i> Dispositivos</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Expulsion" asp-action="Index"><i class="bi bi-crosshair"></i>   Expulsión</a>
                         </li>
                         <li class="nav-item">
@@ -35,7 +38,14 @@
                         </li>
                     </ul>
                 </div>
+                <div class="navbar-nav ml-auto">
+                    <div class="nav-item dropdown login-dropdown">
+                        <a href="#" class="nav-item nav-link text-white btn btn-outline-secondary rounded-pill px-3"><i class="bi bi-person-fill"></i> ADMIN </a>
+                        
+                    </div>
+                </div>
             </div>
+
         </nav>
     </header>
     <div class="container">
