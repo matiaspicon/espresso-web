@@ -15,7 +15,7 @@ namespace proyecto_final_webconfig.Repository
 
         public async Task<IEnumerable<Event>> GetAllRecentsEvents()
         {
-            return await espressoContext.Events.ToListAsync();
+            return await espressoContext.Events.OrderByDescending(e => e.Timestamp).ToListAsync();
         }
 
         public async Task<Event> GetEventByID(int id)
