@@ -15,12 +15,12 @@ namespace proyecto_final_webconfig.Repository
 
         public async Task<IEnumerable<Event>> GetAllRecentsEvents()
         {
-            return await espressoContext.Events.OrderByDescending(e => e.Timestamp).ToListAsync();
+            return await espressoContext.Events.OrderByDescending(e => e.Timestamp).Include(e => e.TypeDetection).ToListAsync();
         }
 
         public async Task<Event> GetEventByID(int id)
         {
-            return await espressoContext.Events.Where(x => x.Id == id).FirstAsync();
+            return await espressoContext.Events.Where(x => x.Id == id).Include(e => e.TypeDetection).FirstAsync();
         }
 
     }
