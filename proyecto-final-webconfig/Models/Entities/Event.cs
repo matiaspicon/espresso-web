@@ -31,14 +31,17 @@ namespace proyecto_final_webconfig.Models.Entities
         [Column("oui_destination")]
         public string? OuiDestination { get; set; }
 
-        [Column("type_detection")]
-        public string TypeDetection { get; set; }
-
         [Column("cant_packets_detect")]
         public int CantPacketsDetect { get; set; }
 
         [Column("timestamp")]
         public DateTime Timestamp { get; set; }
+
+        [Column("id_type_detection")]
+        public int IdTypeDetection { get; set; }
+
+        [ForeignKey("IdTypeDetection")]
+        public TypeDetection TypeDetection { get; set; }
     }
 
 }

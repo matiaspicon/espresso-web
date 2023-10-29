@@ -11,6 +11,10 @@ namespace proyecto_final_webconfig.Data
 
         public DbSet<Event> Events { get; set; }
         public DbSet<Device> Devices { get; set; }
+        public DbSet<TypeDetection> TypesDetection { get; set; }
+        public DbSet<DeviceBlacklist> DeviceBlacklists { get; set; }
+
+
     }
 }
 

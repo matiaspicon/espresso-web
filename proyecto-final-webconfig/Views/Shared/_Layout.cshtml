@@ -25,13 +25,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Inicio</a>
                         </li> *@
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Monitoreo" asp-action="Index"><i class="bi bi-list-columns-reverse"></i>   Registro de eventos</a>
+                            <a class="nav-link text-white" asp-area="" asp-controller="Monitoreo" asp-action="List"><i class="bi bi-list-columns-reverse"></i>   Registro de eventos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Device" asp-action="Index"><i class="bi bi-display"></i> Dispositivos</a>
+                            <a class="nav-link text-white" asp-controller="Device" asp-action="ListDevices"><i class="bi bi-display"></i> Dispositivos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-controller="Expulsion" asp-action="Index"><i class="bi bi-crosshair"></i>   Expulsión</a>
+                            <a class="nav-link text-white" asp-controller="Device" asp-action="ListBlackList"><i class="bi bi-crosshair"></i>   Expulsión</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-controller="Configuracion" asp-action="Index"><i class="bi bi-wrench"></i>   Configuración</a>
@@ -62,6 +62,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@popperjs/core@@2.5.3/dist/umd/popper.min.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -9,10 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<EspressoContext>(options => options.UseSqlite(builder.Configuration.GetConnectionString("DB")));
+
 builder.Services.AddTransient<IEventsRepository, EventsRepository>();
 builder.Services.AddTransient<IEventsService, EventsService>();
 builder.Services.AddTransient<IDevicesRepository, DevicesRepository>();
 builder.Services.AddTransient<IDevicesService, DevicesService>();
+builder.Services.AddTransient<IDevicesBlacklistRepository, DevicesBlacklistRepository>();
 
 
 var app = builder.Build();

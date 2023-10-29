@@ -17,12 +17,18 @@ namespace proyecto_final_webconfig.Controllers
             this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> List()
         {
-            //get all entities from the database events
             var events = await eventsService.GetAllRecentsEvents();
 
             return View(events);
+        }
+
+        public async Task<IActionResult> ListByDevice(string mac)
+        {
+            var events = await eventsService.GetAllRecentsEventsByDevice(mac);
+
+            return View("List", events);
         }
         public async Task<IActionResult> Details(int id)
         {

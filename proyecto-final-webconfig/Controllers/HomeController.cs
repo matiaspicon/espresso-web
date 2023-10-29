@@ -9,23 +9,13 @@ namespace proyecto_final_webconfig.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IEventsService eventsService;
 
-        public HomeController(ILogger<HomeController> logger, IEventsService eventsService)
+        public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-            this.eventsService = eventsService;
         }
 
-        public async Task<IActionResult> Index()
-        {
-            //get all entities from the database events
-            var events = await eventsService.GetAllRecentsEvents();
-
-            return View();
-        }
-
-        public IActionResult Privacy()
+        public IActionResult Index()
         {
             return View();
         }

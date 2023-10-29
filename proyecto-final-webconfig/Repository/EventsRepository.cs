@@ -23,5 +23,10 @@ namespace proyecto_final_webconfig.Repository
             return await espressoContext.Events.Where(x => x.Id == id).Include(e => e.TypeDetection).FirstAsync();
         }
 
+        public async Task<IEnumerable<Event>> GetAllRecentsEventsByDevice(string MAC)
+        {
+           return await espressoContext.Events.Where(e => e.MacSource == MAC).OrderByDescending(e => e.Timestamp).Include(e => e.TypeDetection).ToListAsync();
+        }
+
     }
 }

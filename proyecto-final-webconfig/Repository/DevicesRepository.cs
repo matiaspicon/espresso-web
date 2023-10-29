@@ -23,5 +23,17 @@ namespace proyecto_final_webconfig.Repository
             return await espressoContext.Devices.Where(x => x.Id == id).FirstAsync();
         }
 
+        //remove device
+        public async Task<int> RemoveDevice(int id)
+        {
+            Device device = await GetDeviceByID(id);
+            if (device == null)
+            {
+                return 0;
+            }
+            _ = espressoContext.Devices.Remove(device);
+            return await espressoContext.SaveChangesAsync();
+        }
+
     }
 }

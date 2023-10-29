@@ -6,5 +6,6 @@ namespace proyecto_final_webconfig.Repository
     {
         Task<IEnumerable<Device>> GetAllDevices();
         Task<Device> GetDeviceByID(int id);
+        Task<int> RemoveDevice(int id);
     }
 }
