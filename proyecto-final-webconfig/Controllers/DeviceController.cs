@@ -57,6 +57,12 @@ namespace proyecto_final_webconfig.Controllers
 
             return RedirectToAction("ListBlackList");
         }
+        public async Task<IActionResult> RemoveOfBlacklist(int id)
+        {
+            await DevicesService.RemoveDeviceToBlacklist(id);
+
+            return RedirectToAction("ListBlackList");
+        }
 
         public IActionResult Privacy()
         {

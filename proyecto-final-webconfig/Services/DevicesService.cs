@@ -44,6 +44,8 @@ namespace proyecto_final_webconfig.Services
         //remove device from blacklist
         public async Task<int> RemoveDeviceToBlacklist(int id)
         {
+            //TODO: add again to devices
+
             return await DevicesBlacklistRepository.RemoveDeviceToBlacklist(id);
         }
 
@@ -58,7 +60,6 @@ namespace proyecto_final_webconfig.Services
             }
             DeviceBlacklist deviceBlacklist = new DeviceBlacklist();
 
-            deviceBlacklist.Id = device.Id;
             deviceBlacklist.MacSource = device.MacSource;
             deviceBlacklist.Description = device.Description;
             deviceBlacklist.EventsDetected = device.EventsDetected;

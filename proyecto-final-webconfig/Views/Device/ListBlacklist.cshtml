@@ -41,7 +41,7 @@
             </td>
             <td >
                 <a asp-controller="Monitoreo" asp-action="ListByDevice" asp-route-mac="@item.MacSource" class="btn btn-info"> <i class="bi bi-exclamation-triangle"></i> Eventos asociados</a>
-                <a asp-action="MoveToBlacklist" asp-route-id="@item.Id" class="btn btn-danger"> <i class="bi bi-dash-circle"></i> Agregar a lista negra</a>
+                <a asp-action="RemoveOfBlacklist" asp-route-id="@item.Id" class="btn btn-success"> <i class="bi bi-check-circle"></i> Quitar de la lista negra</a>
             </td>
         </tr>
 }

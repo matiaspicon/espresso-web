@@ -14,7 +14,7 @@ namespace proyecto_final_webconfig.Models.Entities
         public string MacSource { get; set; }
 
         [Column("description")]
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         [Column("events_detected")]
         public int EventsDetected { get; set; }

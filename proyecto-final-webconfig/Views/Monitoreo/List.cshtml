@@ -23,10 +23,10 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.MacDestination)
-            </th> *@
-            <th>
-                Dispositivo destino
-            </th>
+            </th> 
+             <th>
+                 Dispositivo destino
+            </th>*@
             <th>
                 Tipo de ataque
             </th>
@@ -34,37 +34,62 @@
                 Tamaño de ataque
             </th>
             <th>
+                Severidad de ataque
+            </th>
+            <th>
                 Hora de detección
             </th>
-            <th></th>
+            <th class="no-sort"></thclas>
         </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.IpSource)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MacSource)
-            </td> *@
-            <td>
-                @Html.DisplayFor(modelItem => item.OuiSource)
-            </td>
-            @* <td>
-                @Html.DisplayFor(modelItem => item.IpDestination)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MacDestination)
-            </td> *@
-            <td>
+            @if (String.IsNullOrEmpty(item.OuiSource))
+            {
+                <td>Anónimo</td>
+            }
+            else
+            {
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.OuiSource)
+                </td>
+            }
+            @*<td>
                 @Html.DisplayFor(modelItem => item.OuiDestination)
+            </td>*@
+            <td>
+                    <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#miModal" data-mensaje="@item.TypeDetection.DescriptionLong"><i class="bi bi-question-circle"></i></button>
+                    @Html.DisplayFor(modelItem => item.TypeDetection.DescriptionShort)
             </td>
             <td>
-                    @Html.DisplayFor(modelItem => item.TypeDetection.DescriptionShort) <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="bi bi-question-circle"></i></button>
+                @if (item.CantPacketsDetect < 50)
+                {
+                    <span class="badge bg-success">Pequeño</span>
+                }
+                else if (item.CantPacketsDetect < 300)
+                {
+                    <span class="badge bg-warning">Mediano</span>
+                }
+                else
+                {
+                    <span class="badge bg-danger">Grande</span>
+                }
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CantPacketsDetect)
+                @if (item.TypeDetection.Severity == 0)
+                {
+                    <span class="badge bg-success">Bajo</span>
+                }
+                else if (item.TypeDetection.Severity == 1)
+                {
+                    <span class="badge bg-warning">Medio</span>
+                }
+                else if (item.TypeDetection.Severity == 2)
+                {
+                    <span class="badge bg-danger">Alto</span>
+                }
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Timestamp)
@@ -78,21 +103,18 @@
 </table>
 
 
-@* TODO: IMPLEMENTAR FUNCION EN JS PARA COPIAR TEXTO DIRECTO  *@
-
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal" id="miModal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h5 class="modal-title">Información del ataque:</h5>
+                 @* <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button> *@
             </div>
             <div class="modal-body">
-                ...
+                <p id="mensajeModal">Texto por defecto</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal">¡Entendido!</button>
             </div>
         </div>
     </div>
@@ -114,8 +136,29 @@
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
     <script>
+        // ignore columns with class "no-sort" and no sort by default
         $(document).ready(function () {
-            $('#miTabla').DataTable();
+            $('#miTabla').DataTable({
+                "order": [],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+            
+
+
+        });
+    </script>
+
+    <script>
+        var miModal = document.getElementById('miModal');
+        miModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var mensaje = button.getAttribute('data-mensaje');
+            var modalBody = miModal.querySelector('#mensajeModal');
+            modalBody.textContent = mensaje;
         });
     </script>
 
