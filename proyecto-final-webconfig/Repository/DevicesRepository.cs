@@ -17,7 +17,10 @@ namespace proyecto_final_webconfig.Repository
         {
             return await espressoContext.Devices.ToListAsync();
         }
-
+        public async Task<IEnumerable<Device>> GetAllUpDevices(DateTime startTimeFilter)
+        {
+            return await espressoContext.Devices.Where( d => d.LastUpDetected >= startTimeFilter).ToListAsync();
+        }
         public async Task<Device> GetDeviceByID(int id)
         {
             return await espressoContext.Devices.Where(x => x.Id == id).FirstAsync();

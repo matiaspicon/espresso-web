@@ -26,9 +26,12 @@ namespace proyecto_final_webconfig.Controllers
 
         public async Task<IActionResult> ListByDevice(string mac)
         {
+            //TODO: get device for MAC and send ID to view
+            ViewBag.IdDevice = 0;
+
             var events = await eventsService.GetAllRecentsEventsByDevice(mac);
 
-            return View("List", events);
+            return View("ListDevice", events);
         }
         public async Task<IActionResult> Details(int id)
         {

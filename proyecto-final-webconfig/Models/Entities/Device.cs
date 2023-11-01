@@ -11,19 +11,20 @@ namespace proyecto_final_webconfig.Models.Entities
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(255)]
         [Column("mac_source")]
-        public string MacSource { get; set; }
+        public string MacSource { get; set; } = "";
 
-        [MaxLength(255)]
         [Column("description")]
         public string? Description { get; set; }
 
         [Column("events_detected")]
-        public int EventsDetected { get; set; }
+        public int? EventsDetected { get; set; }
 
-        [Column("last_timestamp")]
-        public DateTime LastTimestamp { get; set; }
+        [Column("last_attack_detected")]
+        public DateTime? LastAttackDetected { get; set; }
+
+        [Column("last_up_detected")]
+        public DateTime LastUpDetected { get; set; }
     }
 }
 

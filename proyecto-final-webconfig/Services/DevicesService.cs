@@ -16,8 +16,12 @@ namespace proyecto_final_webconfig.Services
 
         public async Task<IEnumerable<Device>> GetAllDevices()
         {
-            return await DevicesRepository.GetAllDevices();
+            // 5 minutes back
+            var now = DateTime.Now.AddMinutes(-1);
+            return await DevicesRepository.GetAllUpDevices(now);
         }
+
+
         public async Task<Device> GetDeviceByID(int id)
         { 
             return await DevicesRepository.GetDeviceByID(id);
@@ -62,7 +66,7 @@ namespace proyecto_final_webconfig.Services
 
             deviceBlacklist.MacSource = device.MacSource;
             deviceBlacklist.Description = device.Description;
-            deviceBlacklist.EventsDetected = device.EventsDetected;
+            deviceBlacklist.EventsDetected = device.EventsDetected.Value;
             deviceBlacklist.TimestampOfBan = DateTime.Now;
 
 

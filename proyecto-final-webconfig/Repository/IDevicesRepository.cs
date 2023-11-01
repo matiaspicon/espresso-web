@@ -5,6 +5,7 @@ namespace proyecto_final_webconfig.Repository
     public interface IDevicesRepository
     {
         Task<IEnumerable<Device>> GetAllDevices();
+        Task<IEnumerable<Device>> GetAllUpDevices(DateTime startTimeFilter);
         Task<Device> GetDeviceByID(int id);
         Task<int> RemoveDevice(int id);
     }
