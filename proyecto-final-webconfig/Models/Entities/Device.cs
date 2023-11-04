@@ -25,6 +25,15 @@ namespace proyecto_final_webconfig.Models.Entities
 
         [Column("last_up_detected")]
         public DateTime LastUpDetected { get; set; }
+
+        [Column("time_of_ban")]
+        public DateTime? TimeOfBan { get; set; }
+
+        [Column("is_banned")]
+        public bool IsBanned { get; set; }
+
+        [Column("is_suspicious")]
+        public bool IsSuspicious { get; set; }
     }
 }
 

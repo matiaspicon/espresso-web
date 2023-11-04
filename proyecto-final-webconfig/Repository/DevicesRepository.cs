@@ -19,24 +19,38 @@ namespace proyecto_final_webconfig.Repository
         }
         public async Task<IEnumerable<Device>> GetAllUpDevices(DateTime startTimeFilter)
         {
-            return await espressoContext.Devices.Where( d => d.LastUpDetected >= startTimeFilter).ToListAsync();
+            return await espressoContext.Devices.Where(d => d.LastUpDetected >= startTimeFilter).ToListAsync();
         }
+
+        public async Task<IEnumerable<Device>> GetAllBanDevices()
+        {
+            return await espressoContext.Devices.Where(d => d.IsBanned).ToListAsync();
+        }
+
         public async Task<Device> GetDeviceByID(int id)
         {
             return await espressoContext.Devices.Where(x => x.Id == id).FirstAsync();
         }
 
-        //remove device
-        public async Task<int> RemoveDevice(int id)
+        //update device
+        public async Task<int> UpdateDevice(Device device)
         {
-            Device device = await GetDeviceByID(id);
-            if (device == null)
-            {
-                return 0;
-            }
-            _ = espressoContext.Devices.Remove(device);
+            espressoContext.Entry(device).State = EntityState.Modified;
             return await espressoContext.SaveChangesAsync();
         }
+
+
+        ////remove device
+        //public async Task<int> RemoveDevice(int id)
+        //{
+        //    Device device = await GetDeviceByID(id);
+        //    if (device == null)
+        //    {
+        //        return 0;
+        //    }
+        //    _ = espressoContext.Devices.Remove(device);
+        //    return await espressoContext.SaveChangesAsync();
+        //}
 
     }
 }

@@ -20,7 +20,7 @@ namespace proyecto_final_webconfig.Controllers
         public async Task<IActionResult> ListDevices()
         {
             //get all entities from the database Devices
-            var Devices = await DevicesService.GetAllDevices();
+            var Devices = await DevicesService.GetAllUpDevices();
 
             return View(Devices);
         }
@@ -28,7 +28,7 @@ namespace proyecto_final_webconfig.Controllers
         public async Task<IActionResult> ListBlacklist()
         {
             //get all entities from the database Devices
-            var Devices = await DevicesService.GetAllDevicesBlacklist();
+            var Devices = await DevicesService.GetAllBanDevices();
 
             return View(Devices);
         }
@@ -40,34 +40,30 @@ namespace proyecto_final_webconfig.Controllers
 
             return View(singleDevice);
         }
-        public async Task<IActionResult> DetailsBlackList(int id)
-        {
-            //get all entities from the database Devices
-            var singleDevice = await DevicesService.GetDeviceByID(id);
+        //public async Task<IActionResult> DetailsBlackList(int id)
+        //{
+        //    //get all entities from the database Devices
+        //    var singleDevice = await DevicesService.GetDeviceByID(id);
 
-            return View(singleDevice);
-        }
+        //    return View(singleDevice);
+        //}
 
 
         //MoveToBlacklist
-        public async Task<IActionResult> MoveToBlacklist(int id)
+        public async Task<IActionResult> BanDevice(int id)
         {
             //move device to blacklist
-            await DevicesService.MoveDeviceToBlacklist(id);
+            await DevicesService.BanDevice(id);
 
             return RedirectToAction("ListBlackList");
         }
-        public async Task<IActionResult> RemoveOfBlacklist(int id)
+        public async Task<IActionResult> UnbanDevice(int id)
         {
-            await DevicesService.RemoveDeviceToBlacklist(id);
+            await DevicesService.UnbanDevice(id);
 
             return RedirectToAction("ListBlackList");
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
