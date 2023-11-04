@@ -16,6 +16,7 @@ builder.Services.AddTransient<IEventsService, EventsService>();
 builder.Services.AddTransient<IDevicesRepository, DevicesRepository>();
 builder.Services.AddTransient<IDevicesService, DevicesService>();
 builder.Services.AddTransient<IDevicesBlacklistRepository, DevicesBlacklistRepository>();
+builder.Services.AddTransient<IStatsRepository, StatsRepository>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
             .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, config =>
