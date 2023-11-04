@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using proyecto_final_webconfig.Data;
 using proyecto_final_webconfig.Repository;
@@ -16,6 +17,14 @@ builder.Services.AddTransient<IDevicesRepository, DevicesRepository>();
 builder.Services.AddTransient<IDevicesService, DevicesService>();
 builder.Services.AddTransient<IDevicesBlacklistRepository, DevicesBlacklistRepository>();
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, config =>
+            {
+                config.Cookie.Name = "Espresso.Cookie";
+                config.LoginPath = "/Login";
+                config.AccessDeniedPath = "/Login/AccessDenied";
+            });
+
 
 var app = builder.Build();
 
@@ -32,6 +41,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
