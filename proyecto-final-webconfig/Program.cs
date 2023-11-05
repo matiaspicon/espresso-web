@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using proyecto_final_webconfig.Data;
 using proyecto_final_webconfig.Repository;
 using proyecto_final_webconfig.Services;
+using System.Globalization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,11 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 
 var app = builder.Build();
+
+var cultureInfo = new CultureInfo("es-AR");
+
+CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
