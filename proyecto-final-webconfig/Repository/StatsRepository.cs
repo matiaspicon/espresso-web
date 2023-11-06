@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using proyecto_final_webconfig.Data;
 using proyecto_final_webconfig.Models.Entities;
 using System;
+using static Microsoft.AspNetCore.Razor.Language.TagHelperMetadata;
 
 namespace proyecto_final_webconfig.Repository
 {
@@ -27,7 +28,17 @@ namespace proyecto_final_webconfig.Repository
             data.CantMediumSeverity = espressoContext.Events.Include(e => e.TypeDetection).Count(e => e.TypeDetection.Severity == 1);
             data.CantHighSeverity = espressoContext.Events.Include(e => e.TypeDetection).Count(e => e.TypeDetection.Severity >= 2);
 
-            data.Uptime = espressoContext.Events.OrderByDescending(e => e.Timestamp).First().Timestamp.ToShortTimeString();
+            //data.Uptime = espressoContext.Events.OrderByDescending(e => e.Timestamp).First().Timestamp.ToShortTimeString();
+
+            var uptime = TimeSpan.FromSeconds(Environment.TickCount / 1000);
+
+            int dias = uptime.Days;
+            int horas = uptime.Hours;
+            int minutos = uptime.Minutes;
+
+            data.Uptime = $"{dias}d - {horas}h : {minutos}m";
+
+
 
             data.CantSmallIncidents = espressoContext.Events.Count(e => e.CantPacketsDetect <= 50);
             data.CantMediumIncidents = espressoContext.Events.Count(e => e.CantPacketsDetect > 50 && e.CantPacketsDetect <= 300);
