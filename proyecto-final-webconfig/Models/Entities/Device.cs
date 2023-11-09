@@ -34,6 +34,9 @@ namespace proyecto_final_webconfig.Models.Entities
 
         [Column("is_suspicious")]
         public bool IsSuspicious { get; set; }
+
+        [Column("is_ignored")]
+        public bool IsIgnored { get; set; }
     }
 }
 

@@ -41,7 +41,7 @@
             </td>
             <td >
                 <a asp-controller="Monitoreo" asp-action="ListByDevice" asp-route-mac="@item.MacSource" class="btn btn-warning"> <i class="bi bi-exclamation-triangle"></i> Eventos asociados</a>
-                    <a asp-action="UnbanDevice" asp-route-id="@item.Id" class="btn btn-success  fw-bold"> <i class="bi bi-check-circle  fw-bold"></i> Permitir nuevamente en la red</a>
+                    <a asp-action="UnbanDevice" asp-route-id="@item.Id" class="btn btn-success  fw-bold"> <i class="bi bi-check-circle  fw-bold"></i> Ignorar actividad de este dispositivo</a>
             </td>
         </tr>
 }

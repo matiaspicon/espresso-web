@@ -21,14 +21,12 @@ namespace proyecto_final_webconfig.Repository
             var data = new Stats();
 
             data.UsersConnected = espressoContext.Devices.Count(d => d.LastUpDetected >= DateTime.Now.AddMinutes(-1));
-            data.RecentIncidents = espressoContext.Events.Count(e => e.Timestamp >= DateTime.Now.AddMinutes(-1));
-            data.ReconnectionIncidents = espressoContext.Events.Count(e => e.IdTypeDetection == 6);
+            data.RecentIncidents = espressoContext.Events.Count(e => e.Timestamp >= DateTime.Now.AddMinutes(-10));
+            data.BanDevices = espressoContext.Devices.Count(e => e.IsBanned);
 
             data.CantLowSeverity = espressoContext.Events.Include(e => e.TypeDetection).Count(e => e.TypeDetection.Severity == 0);
             data.CantMediumSeverity = espressoContext.Events.Include(e => e.TypeDetection).Count(e => e.TypeDetection.Severity == 1);
             data.CantHighSeverity = espressoContext.Events.Include(e => e.TypeDetection).Count(e => e.TypeDetection.Severity >= 2);
-
-            //data.Uptime = espressoContext.Events.OrderByDescending(e => e.Timestamp).First().Timestamp.ToShortTimeString();
 
             var uptime = TimeSpan.FromSeconds(Environment.TickCount / 1000);
 

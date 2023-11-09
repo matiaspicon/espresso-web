@@ -14,7 +14,7 @@ namespace proyecto_final_webconfig.Models.Entities
         public int Id { get; set; }
 
         [Column("ip_source")]
-        public string IpSource { get; set; }
+        public string? IpSource { get; set; }
 
         [Column("mac_source")]
         public string MacSource { get; set; }

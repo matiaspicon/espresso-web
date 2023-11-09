@@ -4,7 +4,7 @@
     {
         public int UsersConnected { get; set; }
         public int RecentIncidents { get; set; }
-        public int ReconnectionIncidents { get; set; }
+        public int BanDevices { get; set; }
 
         public int CantSmallIncidents { get; set; }
         public int CantMediumIncidents { get; set; }
