@@ -38,7 +38,7 @@ namespace proyecto_final_webconfig.Services
 
             //update is_banned to true
             device.IsBanned = true;
-            device.IsSuspicious = false;
+            device.IsSuspicious = true;
             device.IsIgnored = false;
             //update time of ban
             device.TimeOfBan = DateTime.Now;
